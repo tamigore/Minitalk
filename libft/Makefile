@@ -6,11 +6,11 @@
 #    By: tamigore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 15:04:29 by tamigore          #+#    #+#              #
-#    Updated: 2019/11/19 13:55:56 by tamigore         ###   ########.fr        #
+#    Updated: 2021/10/24 18:28:26 by tamigore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -87,8 +87,7 @@ SRC/S = ft_strlen.c		\
 		ft_strtrim.c	\
 		ft_split.c		\
 		ft_strrev.c		\
-		ft_search.c		\
-		ft_strnjoin.c
+		ft_search.c
 
 SRC/L = ft_lstnew.c			\
 		ft_lstdelone.c		\

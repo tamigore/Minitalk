@@ -1,3 +1,5 @@
+CC = clang
+
 CLIENT = client
 
 SERVEUR = serveur
@@ -30,11 +32,11 @@ all: $(SERVEUR) $(CLIENT)
 
 $(SERVEUR): $(OBJ_S) $(HEADER)
 	@ make -C $(LIBFT)
-	gcc -g $(CFLAGS) $(OBJ_S) $(FLAGS) -o $(SERVEUR)
+	$(CC) $(CFLAGS) $(OBJ_S) $(FLAGS) -o $(SERVEUR)
 
 $(CLIENT): $(OBJ_C) $(HEADER)
 	@ make -C $(LIBFT)
-	gcc -g $(CFLAGS) $(OBJ_C) $(FLAGS) -o $(CLIENT)
+	$(CC) $(CFLAGS) $(OBJ_C) $(FLAGS) -o $(CLIENT)
 
 norme:
 	norminette ./$(LIBFT)
