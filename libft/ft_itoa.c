@@ -6,20 +6,20 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 20:05:26 by tamigore          #+#    #+#             */
-/*   Updated: 2019/11/19 13:34:41 by tamigore         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:50:56 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_neg(int n)
+static	int	ft_neg(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char			*p;
 	int				unit;
@@ -32,7 +32,8 @@ char			*ft_itoa(int n)
 	else
 		nb = n;
 	unit = ft_nbrlen(nb);
-	if (!(p = (char *)malloc(unit + 1 + ft_neg(n))))
+	p = (char *)malloc(unit + 1 + ft_neg(n));
+	if (!p)
 		return (NULL);
 	while (unit > 0)
 	{

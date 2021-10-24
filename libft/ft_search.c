@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int		ft_search(char *str, char c)
+int	ft_search(char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

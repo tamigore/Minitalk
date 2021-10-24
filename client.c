@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/24 14:15:16 by tamigore          #+#    #+#             */
+/*   Updated: 2021/10/24 14:39:16 by tamigore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
-void			error(char *str)
+void	error(char *str)
 {
 	if (str)
 		free(str);
@@ -8,7 +20,7 @@ void			error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-int				send_null(int pid, char *str)
+int	send_null(int pid, char *str)
 {
 	static int	i = 0;
 
@@ -21,7 +33,7 @@ int				send_null(int pid, char *str)
 	return (1);
 }
 
-int				send_bit(int s_pid, char *str)
+int	send_bit(int s_pid, char *str)
 {
 	static int	bit = -1;
 	static char	*msg = 0;
@@ -50,9 +62,9 @@ int				send_bit(int s_pid, char *str)
 	return (1);
 }
 
-void			handler(int signum)
+void	handler(int signum)
 {
-	int			end;
+	int	end;
 
 	end = 0;
 	if (signum == SIGUSR1)
@@ -69,31 +81,22 @@ void			handler(int signum)
 	}
 }
 
-int			main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int		i;
-	int		nb;
+	int	i;
+	int	nb;
 
 	if (ac != 3)
-	{
-		ft_putstr("Error usage: ./client <PID> <MESSAGE>\n");
 		exit(EXIT_FAILURE);
-	}
 	i = 0;
 	while (av[1][i])
 	{
 		if (!ft_isdigit(av[1][i++]))
-		{
-			ft_putstr("Error: pid invalid\n");
 			exit(EXIT_FAILURE);
-		}
 	}
 	nb = ft_atoi(av[1]);
 	if (nb <= 0)
-	{
-		ft_putstr("Error: pid invalid\n");
 		exit(EXIT_FAILURE);
-	}
 	signal(SIGUSR1, handler);
 	signal(SIGUSR2, handler);
 	send_bit(nb, av[2]);

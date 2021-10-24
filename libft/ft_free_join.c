@@ -6,7 +6,7 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 15:24:26 by tamigore          #+#    #+#             */
-/*   Updated: 2019/11/19 13:59:31 by tamigore         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:39:45 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_free(int x, char *s1, char *s2)
 	}
 }
 
-char		*ft_free_join(char *s1, char *s2, int x)
+char	*ft_free_join(char *s1, char *s2, int x)
 {
 	char	*p;
 	int		i;
@@ -35,7 +35,8 @@ char		*ft_free_join(char *s1, char *s2, int x)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(p = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	p = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!p)
 		return (NULL);
 	if (s1)
 	{

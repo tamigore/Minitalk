@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strnjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 18:03:25 by tamigore          #+#    #+#             */
-/*   Updated: 2019/11/07 11:20:18 by tamigore         ###   ########.fr       */
+/*   Created: 2021/10/14 18:22:44 by tamigore          #+#    #+#             */
+/*   Updated: 2021/10/14 18:22:49 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strnjoin(char *s1, char *s2, int r)
 {
-	char	*p;
-	int		i;
-	int		j;
+	char	*join;
+	char	*tmp;
 
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
+	tmp = s1;
+	join = ft_strnew(ft_strlen(s1) + ft_strlen(s2) - (ft_strlen(s2) - r));
+	if (!s1 || !s2 || !join)
 		return (NULL);
-	p = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!p)
-		return (NULL);
-	if (s1)
-	{
-		while (s1[i])
-		{
-			p[i] = s1[i];
-			i++;
-		}
-	}
-	if (s2)
-		while (s2[j])
-			p[i++] = s2[j++];
-	p[i] = '\0';
-	return (p);
+	ft_strncat(join, s1, ft_strlen(s1));
+	ft_strncat(join, s2, r);
+	free(tmp);
+	return (join);
 }

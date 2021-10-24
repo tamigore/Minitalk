@@ -22,6 +22,18 @@ static	void	ft_free_all(char **tab, int x)
 	free(tab);
 }
 
+static	int	add_space_to_tab(char **tab, int j, int *x)
+{
+	tab[*x] = (char *)malloc(j + 1);
+	if (!tab[*x])
+	{
+		ft_free_all(tab, *x);
+		return (0);
+	}
+	x++;
+	return (1);
+}
+
 static	char	**ft_malloctab(char **tab, const char *s, char c, int x)
 {
 	int		j;
@@ -37,14 +49,8 @@ static	char	**ft_malloctab(char **tab, const char *s, char c, int x)
 			i++;
 		}
 		if (j != 0)
-		{
-			if (!(tab[x] = (char *)malloc(j + 1)))
-			{
-				ft_free_all(tab, x);
+			if (!add_space_to_tab(tab, j, &x))
 				return (NULL);
-			}
-			x++;
-		}
 		if (s[i])
 			i++;
 	}
@@ -74,7 +80,7 @@ static	void	ft_filtab(char **tab, const char *s, char c)
 	tab[x] = NULL;
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -90,9 +96,11 @@ char			**ft_split(char const *s, char c)
 			j++;
 		i++;
 	}
-	if (!(tab = (char **)malloc(sizeof(char *) * (j + 1))))
+	tab = (char **)malloc(sizeof(char *) * (j + 1));
+	if (!tab)
 		return (NULL);
-	if (!(tab = ft_malloctab(tab, s, c, 0)))
+	tab = ft_malloctab(tab, s, c, 0);
+	if (!tab)
 		return (NULL);
 	ft_filtab(tab, s, c);
 	return (tab);

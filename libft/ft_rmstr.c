@@ -21,7 +21,8 @@ char	*ft_rmstr(char *str, int i, int j)
 
 	x = 0;
 	y = 0;
-	if (!(tmp = ft_strnew(ft_strlen(str) - i + j + 1)))
+	tmp = ft_strnew(ft_strlen(str) - i + j + 1);
+	if (!tmp)
 		return (NULL);
 	while (str[x])
 	{

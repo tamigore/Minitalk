@@ -12,6 +12,17 @@
 
 #include "libft.h"
 
+static	int	init(t_list *p, t_list *tmp, t_list *lst, void (*del)(void *))
+{
+	if (!p)
+	{
+		ft_lstclear(&lst, del);
+		return (0);
+	}
+	tmp = p;
+	return (1);
+}
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*p;
@@ -19,16 +30,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f)
 		return (NULL);
-	if (!(p = ft_lstnew(f(lst->content))))
-	{
-		ft_lstclear(&lst, del);
+	tmp = NULL;
+	p = ft_lstnew((*f)(lst->content));
+	if (!init(p, tmp, lst, del))
 		return (NULL);
-	}
-	tmp = p;
 	lst = lst->next;
 	while (lst)
 	{
-		if (!(p->next = ft_lstnew(f(lst->content))))
+		p->next = ft_lstnew((*f)(lst->content));
+		if (!p->next)
 		{
 			ft_lstclear(&lst, del);
 			break ;

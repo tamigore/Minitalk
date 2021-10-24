@@ -6,7 +6,7 @@
 /*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 18:31:48 by tamigore          #+#    #+#             */
-/*   Updated: 2019/11/22 16:53:55 by tamigore         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:46:36 by tamigore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strnjoin(char *s1, char *s2, int r);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_strrev(char *s);
@@ -101,13 +102,13 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_itoa(int n);
 void			ft_sorttab(char **tab);
-int				ft_nbrlen(long long	nbr);
+int				ft_nbrlen(long long nbr);
 
 /*
 **	OPTION
 */
 
-typedef	struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -123,7 +124,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
 
-typedef	struct	s_lst
+typedef struct s_lst
 {
 	void			*content;
 	int				fd;
@@ -137,7 +138,10 @@ int				ft_search(char *str, char c);
 char			*ft_rmstr(char *str, int i, int j);
 char			*ft_rmchar(char *str, char c);
 char			*ft_free_rmstr(char *str, int i, int j);
+
 char			*ft_free_rmchar(char *str, char c);
+int				ft_count_char(char *str, char c);
+
 char			*ft_free_join(char *s1, char *s2, int x);
 
 #endif

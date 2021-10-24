@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   serveur.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tamigore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/24 14:15:35 by tamigore          #+#    #+#             */
+/*   Updated: 2021/10/24 14:15:37 by tamigore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	error(int pid, char *str)
@@ -16,7 +28,7 @@ char	*print_string(char *message)
 	return (NULL);
 }
 
-char    	*ft_str_add_char(char *str, char c)
+char	*ft_str_add_char(char *str, char c)
 {
 	char	*res;
 	int		i;

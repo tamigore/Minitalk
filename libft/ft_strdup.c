@@ -20,7 +20,8 @@ char	*ft_strdup(const char *src)
 	if (!src)
 		return (NULL);
 	i = ft_strlen(src);
-	if (!(copy = (char *)malloc(i + 1)))
+	copy = (char *)malloc(i + 1);
+	if (!copy)
 		return (NULL);
 	i = 0;
 	while (src[i])
